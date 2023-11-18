@@ -29,7 +29,7 @@ void addToDoBottomSheet(BuildContext context, List<ToDo> todoList, Function load
                         title: titleController.text.trim(),
                         description: descriptionController.text.trim(),
                         completed: false,
-                        id: todoList.last.id + 1,
+                        id: todoList.isNotEmpty ? todoList.last.id + 1 : 1,
                         createdAt: "${DateTime.now()}"));
                     await loadData.call();
                   } else {
