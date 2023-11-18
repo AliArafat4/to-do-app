@@ -25,10 +25,14 @@ void deleteToDos(ToDo todo) async {
 }
 
 void addToDos(ToDo todo) async {
+  print(todo.completed);
   final SupabaseClient supabase = Supabase.instance.client;
-  final data = await supabase
-      .from("to-do")
-      .insert({'title': todo.title, 'description': todo.description, 'created_at': todo.createdAt});
+  final data = await supabase.from("to-do").insert({
+    'title': todo.title,
+    'description': todo.description,
+    'created_at': todo.createdAt,
+    'completed': todo.completed,
+  });
 }
 
 void updateToDos(ToDo todo) async {
